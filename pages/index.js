@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Homes from "./components/Homes";
 import Carusel from "./components/Carusel";
@@ -7,9 +6,7 @@ import Finfo from "./components/Finfo";
 import Finfos from "./components/Finfos";
 
 export default function Home() {
- 
   return (
-    
     <div className={styles.container}>
       <Head>
         <title>Jamafud</title>
@@ -32,8 +29,6 @@ export default function Home() {
         <Finfo />
         <Finfos />
       </main>
-      
     </div>
-    
   );
 }
