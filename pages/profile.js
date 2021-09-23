@@ -1,20 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "../styles/Profile.module.css";
 import { useRouter } from "next/router";
 import ContextWrapper from "./components/ContextWrapper";
 
 export default function profile() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
-  const value = useContext(ContextWrapper)
-
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const value = useContext(ContextWrapper);
 
   const goPlanner = () => {
-    alert('Go to Planner')
+    alert("Go to Planner");
   };
   const goSeemenu = () => {
     //alert('Go to See Menu')
-    console.log("este es el token ",value)
-    router.push('/SeeMenu')
+    console.log("este es el token ", value);
+    router.push("/SeeMenu");
   };
 
   const imgExample =
