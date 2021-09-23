@@ -4,7 +4,8 @@ import Layout from "./components/Layout";
 import "../public/nprogress.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import ContextWrapper from "./components/ContextWrapper";
+import { AuthProvider } from "../contexts/auth";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
@@ -31,11 +32,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     //<Context.Provider tokenValue={TOKEN}>
-    <ContextWrapper>
+    <AuthProvider>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ContextWrapper>
+    </AuthProvider>
   );
 }
 

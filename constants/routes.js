@@ -1,7 +1,7 @@
 const publicRoutes = {
-  LOGIN: "/Login",
-  REGISTER: "/SingUp",
-  FOODECUADOR: "/foodEcuador"
+  LOGIN: "/singIn",
+  REGISTER: "/singUp",
+  FOODECUADOR: "/foodEcuador",
 };
 
 const privateRoutes = {
