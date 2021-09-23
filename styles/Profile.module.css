@@ -1,0 +1,50 @@
+.profileMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: whitesmoke;
+}
+.profile{
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: black solid 2px;
+    margin:10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.img{
+    border-radius: 200px;
+    
+    
+}
+.txt{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.txtbtn{
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color:white;
+}
+.txtInfo{
+    font-size: 15px;
+    text-align: center;
+}
+.btn{
+    margin:5px;
+    background-color: blueviolet;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    padding: 5px;
+    margin-top: 10px;
+}
