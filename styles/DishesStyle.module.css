@@ -1,0 +1,23 @@
+.edge {
+    background-color: #E0CFFC;
+}
+
+.title {
+    text-align: center;
+    margin-top: 0;
+}
+
+.gridStyle {
+    text-align: center;
+}
+
+.moreInfoDivStyle {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.moreInfoLinkStyle {
+    background-color: #000077;
+    border-radius: 5px;
+    padding: 5px;
+}
