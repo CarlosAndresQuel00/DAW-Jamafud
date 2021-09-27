@@ -8,10 +8,11 @@ const profile = () => {
   const router = useRouter();
   const goPlanner = () => {
     alert("Go to Planner");
+    router.replace("/week");
   };
   const goSeemenu = () => {
     alert("Go to See Menu");
-    router.push("/SeeMenu");
+    router.replace("/SeeMenu");
   };
 
   const imgExample =

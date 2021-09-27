@@ -1,16 +1,11 @@
-import * as React from "react";
-import { useTheme } from "@mui/material/styles";
+import React from "react";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { Button } from "@material-ui/core";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+import { useTheme } from "@mui/material/styles";
+import { useRouter } from "next/router";
 
 const images = [
   {
@@ -25,16 +20,13 @@ const images = [
     imgPath:
       "https://cocina-casera.com/wp-content/uploads/2018/06/seco-de-carne.jpg",
   },
-  {
-    imgPath:
-      "https://cocina-casera.com/wp-content/uploads/2018/05/platos-tipicos-ecuador-2-1.jpg",
-  },
 ];
 
-function SwipeableTextMobileStepper() {
+const CarouselMenu = ({ dishes }) => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
+  const router = useRouter();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -44,60 +36,41 @@ function SwipeableTextMobileStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleStepChange = (step) => {
-    setActiveStep(step);
+  const handleDish = () => {
+    router.replace("/createDish");
   };
 
   return (
-    <Box sx={{ maxWidth: "100%", flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-
-          pl: 2,
-          bgcolor: "background.default",
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
+    <>
+      <Box sx={{ flexGrow: 1 }} style={{ display: "-webkit-inline-box" }}>
         {images.map((step, index) => (
-          <div key={index}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: 350,
-                  display: "block",
-                  overflow: "hidden",
-                  width: "100%",
-                }}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
+          <div key={index} style={{ paddingLeft: 90, paddingRight: 90 }}>
+            <Box
+              component="img"
+              sx={{
+                height: 140,
+                display: "block",
+                maxWidth: 360,
+                overflow: "hidden",
+                width: "100%",
+              }}
+              src={step.imgPath}
+              alt="Not found image"
+            />
           </div>
         ))}
-      </AutoPlaySwipeableViews>
+      </Box>
       <MobileStepper
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
+        style={{ maxWidth: 1088, margin: "0 auto" }}
         nextButton={
           <Button
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
           >
-            Next
             {theme.direction === "rtl" ? (
               <KeyboardArrowLeft />
             ) : (
@@ -112,12 +85,21 @@ function SwipeableTextMobileStepper() {
             ) : (
               <KeyboardArrowLeft />
             )}
-            Back
           </Button>
         }
       />
-    </Box>
+      <div style={{ textAlign: "start", paddingLeft: 100 }}>
+        <Button
+          //type="submit"
+          variant="contained"
+          color="primary"
+          onClick={handleDish}
+        >
+          CREAR MENU
+        </Button>
+      </div>
+    </>
   );
-}
+};
 
-export default SwipeableTextMobileStepper;
+export default CarouselMenu;

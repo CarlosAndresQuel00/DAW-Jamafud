@@ -14,10 +14,16 @@ const SingUpForm = () => {
   const onSubmit = async (data) => {
     try {
       console.log("desde onSubmit", data);
-      const userData = {
-        ...data,
-      };
-      const response = await registerForm(userData);
+      //convierto a form data la informacion
+      let formData = new FormData();
+      formData.append("name", userData.name);
+      formData.append("email", userData.email);
+      formData.append("password", userData.password);
+      formData.append("password_confirmation", userData.password_confirmation);
+      formData.append("birthday", userData.birthday);
+      formData.append("image", userData.image[0]);
+      console.log("desde formdata", formData);
+      const response = await registerForm(formData);
       console.log("response token", response.data);
       alert("Usuario creado con éxito!");
     } catch (e) {

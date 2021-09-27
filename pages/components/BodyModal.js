@@ -24,7 +24,7 @@ const BodyModal = () => {
   }
 
   const handleAdd = () => {
-    router.replace("/foodEcuador");
+    router.replace("/week");
   };
 
   const handleClose = () => {
