@@ -5,6 +5,7 @@ import Homes from "./components/Homes";
 import Carusel from "./components/Carusel";
 import Finfo from "./components/Finfo";
 import Finfos from "./components/Finfos";
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -20,7 +21,7 @@ export default function Home() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-      
+
       </Head>
      
  

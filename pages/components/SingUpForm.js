@@ -104,7 +104,7 @@ const SingUpForm = () => {
             })}
           />
           {errors.birthday && errors.birthday.type === "required" && (
-            <span>Debe escoger la fecha de su cumpleaños</span>
+              <span>Debe escoger la fecha de su cumpleaños</span>
           )}
           <br></br>
           <label htmlFor="image">

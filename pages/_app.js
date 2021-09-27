@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeError", handleStop);
     };
   }, [router]);
-
   return (
     <AuthProvider>
       <Layout>
