@@ -9,8 +9,24 @@ import {
   FormHelperText,
   Button,
 } from "@material-ui/core";
+import { useRouter } from "next/router";
 
 export default function createDish() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
+
+  const handleIngredient = () => {
+    router.replace("/nuevoIngrediente");
+  };
+
+  const handleSeeMenu = () => {
+    router.replace("/SeeMenu");
+  };
+
+  const handleMenu = () => {
+    router.replace("/menu");
+  };
+
   return (
     <Container>
       <h1 className={styles.titulo}>Mi platillo</h1>
@@ -18,12 +34,7 @@ export default function createDish() {
         <Stack spacing={2} sx={{ width: 800 }}>
           foto
           <FormControl>
-            <InputLabel htmlFor="image">Imagen del platillo</InputLabel>
-            <Input
-              id="image"
-              type="file"
-              aria-describedby="image-helper-text"
-            />
+            <Input type="file" aria-describedby="image-helper-text" />
             <FormHelperText id="image-helper-text">
               Escriba el tipo de platillo.
             </FormHelperText>
@@ -75,7 +86,23 @@ export default function createDish() {
               Escriba el tipo de platillo.
             </FormHelperText>
           </FormControl>
-          <Button variant="contained">Agregar ingredientes</Button>
+          <div style={{ textAlign: "center" }}>
+            <Button variant="contained" color="primary" onClick={handleSeeMenu}>
+              Guardar
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleMenu}>
+              Cancelar
+            </Button>
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleIngredient}
+            >
+              Agregar ingredientes
+            </Button>
+          </div>
         </Stack>
       </Stack>
     </Container>

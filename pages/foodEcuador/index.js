@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Grid, Link as MuiLink } from "@material-ui/core";
 import Image from "next/image";
-import Dish from "../api/dishes";
+import Dish from "../../api/dishes";
 import styles from "../../styles/DishesStyle.module.css";
 
 export default function Index({ dishes }) {

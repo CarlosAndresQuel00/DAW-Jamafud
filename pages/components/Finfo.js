@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 
 export default function MediaControlCard() {
   return (
-    <Card sx={{ display: "flex" }}>
+    <Card sx={{ display: "flex" }} style={{ justifyContent: "center" }}>
       <Box>
         <CardContent sx={{ flex: "2 5 auto" }}>
           <Typography

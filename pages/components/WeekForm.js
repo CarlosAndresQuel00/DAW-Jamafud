@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import styles from "../../styles/Week.module.css";
-import { CheckBox } from "@material-ui/icons";
+import Checkbox from "@mui/material/Checkbox";
+import Menus from "../../api/menuses";
+import { Button } from "@material-ui/core";
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function WeekForm() {
-  const [checked, setChecked] = useState(true);
-  const checkChanged = (state) => {
-    setChecked(!checked);
-  };
-
   const router = useRouter();
   const {
     register,
@@ -20,11 +17,11 @@ export default function WeekForm() {
   const onSubmit = async (data) => {
     try {
       console.log("desde onSubmit", data);
-      const response = await Menuses.register(data);
-      console.log("response token", response.data.token);
+      const response = await Menus.create(data);
+      console.log("response token", response.data);
 
       alert("Dias selecionados con éxito!");
-      router.push("/menuses");
+      //router.push("/menuses");
     } catch (e) {
       console.log("e", e.response);
       //const { response } = e;
@@ -32,58 +29,57 @@ export default function WeekForm() {
     }
   };
 
+  const handleMenu = () => {
+    router.replace("/menu");
+  };
+
   return (
     <>
-      <div className="styles.form">
+      <div>
         <h1 style={{ textAlign: "center" }}>
           SELECCIONE LOS DE DIAS QUE VA SELECCIONAR EL MENU
         </h1>
         <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: "center" }}>
-          <label htmlFor="name">LUNES</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-          <br></br>
-          <label htmlFor="email">MARTES</label>
-          <br></br>
-          <CheckBox onChange={checkChanged} />
-
-          <br></br>
-          <label htmlFor="password">MIERCOLES</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-
-          <br></br>
-          <label htmlFor="password_confirmation">JUEVES</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-
-          <br></br>
-          <label htmlFor="password_confirmation">VIERNES</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-
-          <br></br>
-          <label htmlFor="password_confirmation">SÁBADO</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-
-          <br></br>
-          <label htmlFor="password_confirmation">DOMINGO</label>
-          <br></br>
-          <CheckBox checked={checked} onChange={checkChanged} />
-
-          <br></br>
-
-          <label htmlFor="password_confirmation">
-            INGRESE LA CANTIDAD DE PERSONAS
-          </label>
-          <br></br>
+          <div style={{ textAlign: "start", width: 140, margin: "0 auto" }}>
+            <Checkbox {...label} />
+            <label htmlFor="name">LUNES</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="email">MARTES</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="password">MIERCOLES</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="password_confirmation">JUEVES</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="password_confirmation">VIERNES</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="password_confirmation">SÁBADO</label>
+            <br></br>
+            <Checkbox {...label} />
+            <label htmlFor="password_confirmation">DOMINGO</label>
+            <br></br>
+          </div>
+          <label htmlFor="password_confirmation">CANTIDAD DE PERSONAS</label>
+          {"  "}
           <input
             id="cantidad"
-            {...register("cantidad", { required: true, maxLength: 10 })}
+            {...register("cantidad", { required: true })}
+            style={{ width: 40 }}
           />
-
-          <input type="submit" value="GUARDAR" className={styles.btn} />
+          <div style={{ textAlign: "end", paddingTop: 20 }}>
+            <Button
+              //type="submit"
+              variant="contained"
+              color="primary"
+              onClick={handleMenu}
+            >
+              Siguiente
+            </Button>
+          </div>
         </form>
       </div>
     </>

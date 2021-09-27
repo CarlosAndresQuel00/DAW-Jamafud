@@ -88,7 +88,7 @@ const NewIngredientPage = ({ ingredientTypes }) => {
   };
 
   const handleCancel = () => {
-    router.push("/");
+    router.push("/createDish");
   };
 
   const handleNext = async () => {
@@ -116,7 +116,7 @@ const NewIngredientPage = ({ ingredientTypes }) => {
         }
       }
     }
-    router.replace("/");
+    router.replace("/createDish");
   };
 
   return (
