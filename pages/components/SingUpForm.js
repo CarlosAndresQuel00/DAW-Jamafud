@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import styles from "../../styles/SingUp.module.css";
-import User from "../api/user";
-import TextField from "@material-ui/core/TextField";
+import { useAuth } from "../../contexts/auth";
+import withoutAuth from "../../hocs/withoutAuth";
 
-export default function SingUpForm() {
-  const router = useRouter();
+const SingUpForm = () => {
+  const { registerForm } = useAuth();
   const {
     register,
     handleSubmit,
@@ -17,14 +14,12 @@ export default function SingUpForm() {
   const onSubmit = async (data) => {
     try {
       console.log("desde onSubmit", data);
-      const response = await User.register(data);
-      console.log("response token", response.data.token);
-     //const response = await User.login(data);
-     //console.log("response token", response.data.token);
-     //setToken(response.data.token);
-
+      const userData = {
+        ...data,
+      };
+      const response = await registerForm(userData);
+      console.log("response token", response.data);
       alert("Usuario creado con éxito!");
-      router.push("/profile");
     } catch (e) {
       console.log("e", e.response);
       //const { response } = e;
@@ -110,9 +105,11 @@ export default function SingUpForm() {
           />
           {errors.birthday && errors.birthday.type === "required" && (
               <span>Debe escoger la fecha de su cumpleaños</span>
-            )}
+          )}
           <br></br>
-          <label htmlFor="image"><b>Escoja una imagen de perfil</b></label>
+          <label htmlFor="image">
+            <b>Escoja una imagen de perfil</b>
+          </label>
           <input
             type="file"
             id="image"
@@ -124,12 +121,14 @@ export default function SingUpForm() {
             })}
           />
           {errors.image && errors.image.type === "required" && (
-              <span>Debe escoger una imagen de perfil</span>
-            )}
+            <span>Debe escoger una imagen de perfil</span>
+          )}
           <br></br>
           <input type="submit" value="Crear Cuenta" className={styles.btn} />
         </form>
       </div>
     </>
   );
-}
+};
+
+export default withoutAuth(SingUpForm);

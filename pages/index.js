@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Homes from "./components/Homes";
 import Carusel from "./components/Carusel";
@@ -20,15 +21,23 @@ export default function Home() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-      </Head>
 
-      <main>
-        <Carusel />
-        <Homes />
-        <br></br>
-        <Finfo />
-        <Finfos />
+      </Head>
+     
+ 
+      <main >
+    
+      
+      
+      
+      <Carusel/>
+      <Homes/>
+      <br></br>
+      <Finfo/>
+      <Finfos/>
       </main>
+       
     </div>
+    
   );
 }

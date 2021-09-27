@@ -5,7 +5,8 @@ const publicRoutes = {
 };
 
 const privateRoutes = {
-  PROFILE: "/Profile",
+  PROFILE: "/profile",
+  HOME: "/",
 };
 
 const Routes = {

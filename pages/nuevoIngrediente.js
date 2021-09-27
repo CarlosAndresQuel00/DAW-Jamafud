@@ -17,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Ingredient from "../api/ingredients";
 import useStyles from "../styles/NewIngredientStyle";
+import withAuth from "../hocs/withAuth";
 
 const schema = yup.object().shape({
   image: yup.mixed().required("Este campo es obligatorio"),
@@ -336,7 +337,7 @@ const NewIngredientPage = ({ ingredientTypes }) => {
   );
 };
 
-export default NewIngredientPage;
+export default withAuth(NewIngredientPage);
 
 export async function getStaticProps() {
   let ingredientTypes = [];

@@ -1,20 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "../styles/Profile.module.css";
 import { useRouter } from "next/router";
-import ContextWrapper from "./components/ContextWrapper";
+import withAuth from "../hocs/withAuth";
 
-export default function profile() {
+const profile = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = useContext(ContextWrapper);
-
   const goPlanner = () => {
     alert("Go to Planner");
   };
   const goSeemenu = () => {
-    //alert('Go to See Menu')
-    console.log("este es el token ", value);
+    alert("Go to See Menu");
     router.push("/SeeMenu");
   };
 
@@ -40,4 +36,5 @@ export default function profile() {
       </div>
     </div>
   );
-}
+};
+export default withAuth(profile);

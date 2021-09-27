@@ -1,12 +1,10 @@
-import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "../../styles/SingIn.module.css";
-import User from "../api/user";
+import { useAuth } from "../../contexts/auth";
 
 const schema = yup.object().shape({
   email: yup
@@ -17,29 +15,26 @@ const schema = yup.object().shape({
 });
 
 export default function SingInForm() {
-  const router = useRouter();
+  const { login } = useAuth();
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({ resolver: yupResolver(schema) });
-  const [token, setToken] = useState("");
   const onSubmit = async (data) => {
     try {
       console.log("desde onSubmit", data);
       const userData = {
         ...data,
       };
-      const response = await User.login(userData);
-      console.log("response token", response.data.token);
-      setToken(response.data.token);
+      const response = await login(userData);
+      console.log("response token", response);
       reset({
         email: "",
         password: "",
       });
       alert("Credenciales correctas!");
-      router.push("/profile");
     } catch (e) {
       console.log("e", e.response);
       const { response } = e;

@@ -43,9 +43,9 @@ function useAuthProvider() {
     }
   };
 
-  async function register(data) {
+  async function registerForm(data) {
     try {
-      const response = await User.register(data);
+      const response = await User.registerForm(data);
       console.log("response", response);
       handleUser(response.data);
       return response;
@@ -74,8 +74,8 @@ function useAuthProvider() {
 
   async function login(data) {
     try {
-      console.log("ingresa a la funcion login de auth");
       const response = await User.login(data);
+      console.log("res", response.data.user);
       handleUser(response.data.user);
       return response;
     } catch (error) {
@@ -166,7 +166,7 @@ function useAuthProvider() {
 
   return {
     user,
-    register,
+    registerForm,
     login,
     logout,
     sendPasswordResetEmail,

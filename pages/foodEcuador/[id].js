@@ -1,9 +1,10 @@
 import { Modal } from "@material-ui/core";
 import { useRef } from "react";
 import useStyles from "../../styles/FoodEcuadorStyle";
-import BodyModal from "../components/BodyModal"
+import BodyModal from "../components/BodyModal";
+import withAuth from "../../hocs/withAuth";
 
-export default function FoodDetail() {
+const FoodDetail = () => {
   const classes = useStyles();
   const rootRef = useRef(null);
 
@@ -23,4 +24,6 @@ export default function FoodDetail() {
       </Modal>
     </div>
   );
-}
+};
+
+export default withAuth(FoodDetail);

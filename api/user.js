@@ -1,7 +1,7 @@
 import api from "./index";
 
 const User = {
-  register: (userData) => {
+  registerForm: (userData) => {
     return api.post("/profile", {
       ...userData,
     });

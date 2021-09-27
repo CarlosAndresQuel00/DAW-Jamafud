@@ -6,15 +6,7 @@ import useSWR from "swr";
 import api from "../../api";
 import styles from "../../styles/ModalDetailDish.module.css";
 
-const fetcher = (url) =>
-  api
-    .get(url, {
-      headers: {
-        Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMTY2MTg0MCwiZXhwIjoxNjMxNjY1NDQwLCJuYmYiOjE2MzE2NjE4NDAsImp0aSI6ImFEMEVwQ1lzQVlhYXAwa0wiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.U_a3_jyn2jlbHlgKm2_L6iXsHhj-qPKOGFKboCkqyDo",
-      },
-    })
-    .then((res) => res.data);
+const fetcher = (url) => api.get(url).then((res) => res.data);
 
 const BodyModal = () => {
   const classes = useStyles();

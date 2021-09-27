@@ -1,6 +1,6 @@
 import NProgress from "nprogress";
 import "../styles/globals.css";
-import Layout from "./components/Layout";
+import Layout from "./components/layout";
 import "../public/nprogress.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -28,10 +28,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeError", handleStop);
     };
   }, [router]);
-  const TOKEN = "";
-
   return (
-    //<Context.Provider tokenValue={TOKEN}>
     <AuthProvider>
       <Layout>
         <Component {...pageProps} />
