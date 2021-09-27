@@ -1,6 +1,6 @@
 import NProgress from "nprogress";
 import "../styles/globals.css";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 import "../public/nprogress.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
