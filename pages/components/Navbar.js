@@ -19,12 +19,12 @@ export default function Navbar() {
   if (user === null) {
     return <Skeleton variant="rect" width={100} height={30} />;
   }
-
+  
   function handleClick(event) {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
   }
-
+  
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -41,7 +41,7 @@ export default function Navbar() {
   const handleProfile = () => {
     router.push("/profile");
   };
-
+  
   return (
     <div
       style={{
