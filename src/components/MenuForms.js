@@ -1,16 +1,16 @@
 import React from "react";
-import Image from "next/image";
-import {
-  Card,
-  CardTitle,
-  CardText,
-  CardGroup,
-  CardBody,
-  CardImg,
-} from "reactstrap";
-import image from "../assets/images/1.jpg";
-import styles from "../../styles/DishesStyle.module.css";
-import Link from "next/link";
+// import Image from "next/image";
+// import {
+//   Card,
+//   CardTitle,
+//   CardText,
+//   CardGroup,
+//   CardBody,
+//   CardImg,
+// } from "reactstrap";
+// import image from "../assets/images/1.jpg";
+// import styles from "../../styles/DishesStyle.module.css";
+// import Link from "next/link";
 import { Button, Link as MuiLink } from "@material-ui/core";
 import CarouselMenu from "./CarouselMenu";
 import { useRouter } from "next/router";
