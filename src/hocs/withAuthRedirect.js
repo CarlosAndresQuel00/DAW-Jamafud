@@ -1,5 +1,5 @@
 import { useAuth } from "../contexts/auth";
-import Loading from "../pages/components/Loading";
+import Loading from "../components/Loading";
 import Routes from "../constants/routes";
 import { useRouter } from "next/router";
 

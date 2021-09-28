@@ -2,6 +2,9 @@ import React from "react";
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
+import createEmotionServer from "@emotion/server/create-instance";
+import theme from "../styles/theme";
+import createEmotionCache from "../styles/createEmotionCache";
 
 export default class MyDocument extends Document {
   render() {
@@ -9,6 +12,7 @@ export default class MyDocument extends Document {
       <Html lang="es">
         <Head>
           {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             //Can add typography
             rel="stylesheet"
@@ -23,6 +27,8 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+// This is a fix for Material UI SSR styles
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
@@ -53,13 +59,28 @@ MyDocument.getInitialProps = async (ctx) => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
+  const cache = createEmotionCache();
+  const { extractCriticalToChunks } = createEmotionServer(cache);
+
   ctx.renderPage = () =>
     originalRenderPage({
       // eslint-disable-next-line react/display-name
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) =>
+        sheets.collect(<App emotionCache={cache} {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
+  // This is important. It prevents emotion to render invalid HTML.
+  // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
+  const emotionStyles = extractCriticalToChunks(initialProps.html);
+  const emotionStyleTags = emotionStyles.styles.map((style) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
+      key={style.key}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ));
 
   return {
     ...initialProps,
@@ -67,6 +88,7 @@ MyDocument.getInitialProps = async (ctx) => {
     styles: [
       ...React.Children.toArray(initialProps.styles),
       sheets.getStyleElement(),
+      ...emotionStyleTags,
     ],
   };
 };

@@ -1,7 +1,7 @@
 import NProgress from "nprogress";
 import "../styles/globals.css";
-import Layout from "./components/Layout";
-import "../public/nprogress.css";
+import Layout from "../components/Layout";
+import "../../public/nprogress.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { AuthProvider } from "../contexts/auth";
@@ -9,6 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
 import Head from "next/head";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 const theme = createTheme();
 

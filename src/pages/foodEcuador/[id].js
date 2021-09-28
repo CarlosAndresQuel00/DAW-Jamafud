@@ -1,7 +1,7 @@
 import { Modal } from "@material-ui/core";
 import { useRef } from "react";
 import useStyles from "../../styles/FoodEcuadorStyle";
-import BodyModal from "../components/BodyModal";
+import BodyModal from "../../components/BodyModal";
 import withAuth from "../../hocs/withAuth";
 
 const FoodDetail = () => {

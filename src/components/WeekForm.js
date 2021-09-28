@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Checkbox from "@mui/material/Checkbox";
-import Menus from "../../api/menuses";
+import Menus from "../api/menuses";
 import { Button } from "@material-ui/core";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };

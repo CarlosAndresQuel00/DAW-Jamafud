@@ -1,8 +1,10 @@
-import styles from "../styles/Week.module.css";
-import { Box } from "@material-ui/core";
-import WeekForm from "./components/WeekForm";
+import React from "react";
 
-export default function Week() {
+import styles from "../styles/SingUp.module.css";
+import { Box } from "@material-ui/core";
+import SingUpForm from "../components/SingUpForm";
+
+export default function SingUp() {
   return (
     <Box className={styles.block}>
       <img
@@ -13,7 +15,7 @@ export default function Week() {
         height="100%"
       />
       <Box mt={4} className={styles.form}>
-        <WeekForm />
+        <SingUpForm />
       </Box>
     </Box>
   );

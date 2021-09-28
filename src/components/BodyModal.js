@@ -1,10 +1,10 @@
 import { Button, Grid, Paper, TextField } from "@material-ui/core";
 import Image from "next/image";
-import useStyles from "../../styles/FoodEcuadorStyle";
+import useStyles from "../styles/FoodEcuadorStyle";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import api from "../../api";
-import styles from "../../styles/ModalDetailDish.module.css";
+import api from "../api";
+import styles from "../styles/ModalDetailDish.module.css";
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 

@@ -7,7 +7,7 @@ import { Skeleton } from "@material-ui/lab";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import logo from "../../public/images/logoJamafud.png";
-import { useAuth } from "../../contexts/auth";
+import { useAuth } from "../contexts/auth";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout();
-    router.replace("/");
+    //router.replace("/");
   };
 
   const handleProfile = () => {
@@ -103,7 +103,6 @@ export default function Navbar() {
               color="inherit"
             >
               <AccountCircle />
-              {user.email}
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -122,7 +121,10 @@ export default function Navbar() {
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
               <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleLogout}>Cerrar sesión</MenuItem>
+              <MenuItem onClick={handleLogout}>
+                {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                <a href="/">Cerrar sesión</a>
+              </MenuItem>
             </Menu>
           </Grid>
         )}

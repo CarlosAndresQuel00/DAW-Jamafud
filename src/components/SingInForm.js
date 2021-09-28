@@ -3,8 +3,8 @@ import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import styles from "../../styles/SingIn.module.css";
-import { useAuth } from "../../contexts/auth";
+import styles from "../styles/SingIn.module.css";
+import { useAuth } from "../contexts/auth";
 
 const schema = yup.object().shape({
   email: yup

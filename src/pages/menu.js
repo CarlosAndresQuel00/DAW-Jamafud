@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../styles/Menu.module.css";
-//import "bootstrap/dist/css/bootstrap.min.css";
-import MenuForms from "./components/MenuForms";
+import MenuForms from "../components/MenuForms";
 import Dish from "../api/dishes";
 
 export default function Menu({ dishes }) {

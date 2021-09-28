@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/SingIn.module.css";
 import { Box } from "@material-ui/core";
-import SingInForm from "./components/SingInForm";
+import SingInForm from "../components/SingInForm";
 import withoutAuth from "../hocs/withoutAuth";
 
 const Login = () => {
