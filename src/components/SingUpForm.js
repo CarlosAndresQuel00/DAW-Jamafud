@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from "../styles/SingUp.module.css";
 import { useAuth } from "../contexts/auth";
 import withoutAuth from "../hocs/withoutAuth";
