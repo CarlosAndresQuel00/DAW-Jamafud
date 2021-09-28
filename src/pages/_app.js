@@ -35,7 +35,6 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeError", handleStop);
     };
   }, [router]);
-
   return (
     <React.Fragment>
       <Head>
